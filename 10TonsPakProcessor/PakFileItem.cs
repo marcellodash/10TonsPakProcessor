@@ -1,5 +1,5 @@
 namespace TenTonsPakProcessor {
-    internal class PakFileItem {
+    public class PakFileItem {
         public string Name { get; }
         public uint Offset { get; }
         public uint Size { get; }

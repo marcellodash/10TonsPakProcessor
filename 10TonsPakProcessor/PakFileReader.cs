@@ -4,7 +4,7 @@ using System.IO;
 using System.Text;
 
 namespace TenTonsPakProcessor {
-    internal class PakFileReader : IDisposable {
+    public class PakFileReader : IDisposable {
         private readonly Stream _stream;
         private readonly BinaryReader _reader;
         private readonly List<PakFileItem> _files = new List<PakFileItem>();
