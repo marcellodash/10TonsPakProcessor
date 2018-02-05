@@ -1,7 +1,16 @@
 # 10TonsPakProcessor
-Packer/unpacker for .pak file format as used in games by 10tons Ltd (Crimsonland 2014, Neon Chrome, Time Recoil, perhaps others).
+Packer/unpacker for .pak file format as used in games by 10tons Ltd. Tested on:
 
-# Usage
+* Crimsonland 2014
+* Neon Chrome
+* Time Recoil
+* JYDGE
+* Tesla vs Lovecraft.
+
+# This Fork
+Added basic UI to view package content and extract files/directories by choice.
+
+# CLI Usage
 To unpack a .pak file:
 
 `10TonsPakProcessor -unpack someFileToUnpack.pak`
