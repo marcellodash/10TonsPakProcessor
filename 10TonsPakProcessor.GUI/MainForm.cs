@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,6 +13,8 @@ namespace TenTonsPakProcessor.GUI
   {
     private PakFileReader reader;
     private ExplorerIcons icons;
+    private string filename;
+    private const string TITLE = "10TonsPakProcessor UI";
 
     public MainForm()
     {
@@ -41,6 +44,8 @@ namespace TenTonsPakProcessor.GUI
 
       pbProgress.Visible = false;
       Enabled = true;
+      this.filename = filename;
+      Text = $"{Path.GetFileName(filename)} - {TITLE}";
     }
 
     private TreeNodeCollection GetRootNode(string path, IDictionary<string, TreeNode> cache, TreeNodeCollection rootNodes)
@@ -145,7 +150,7 @@ namespace TenTonsPakProcessor.GUI
 
     private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
     {
-      btnExtract.Enabled = e.Node != null;
+      btnPreview.Enabled = btnExtract.Enabled = e.Node != null;
     }
 
     private IEnumerable<PakFileItem> EnumerateItems(TreeNode node)
@@ -171,6 +176,39 @@ namespace TenTonsPakProcessor.GUI
       await Task.Run(() => Extract(folderBrowserDialog.SelectedPath, items));
       pbProgress.Visible = false;
       Enabled = true;      
+    }
+
+    private void btnPreview_Click(object sender, EventArgs e)
+    {
+      if (treeView.SelectedNode == null)
+        return;
+      PakFileItem item = treeView.SelectedNode.Tag as PakFileItem;
+      if (item == null)
+        return;
+
+      string targetPath = Path.Combine(Path.GetTempPath(), Path.GetFileName(item.Name));
+
+      using (FileStream stream = new FileStream(targetPath, FileMode.Create))
+      {
+        byte[] content = reader.GetData(item);
+        stream.Write(content, 0, content.Length);
+      }
+
+      Text = "Waiting for preview to close";
+      ProcessStartInfo info = new ProcessStartInfo(targetPath);
+      info.UseShellExecute = true;
+      try
+      {
+        Process process = Process.Start(info);
+        process.WaitForExit();
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(this, $"Unable to preview file:\n{targetPath}\n\n{ex.Message}", "Preview Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+
+      File.Delete(targetPath);
+      Text = $"{Path.GetFileName(filename)} - {TITLE}";
     }
   }
 }
