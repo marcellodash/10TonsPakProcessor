@@ -3,7 +3,7 @@ using System.IO;
 using System.Text;
 
 namespace TenTonsPakProcessor {
-    internal class PakFileWriter {
+    public class PakFileWriter {
         private readonly List<TenTonsPakFile> _files = new List<TenTonsPakFile>();
 
         public PakFileWriter() {

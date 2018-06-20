@@ -97,5 +97,8 @@
   <ItemGroup>
     <None Include="res\Button_Preview.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="res\Button_CreateArchive.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

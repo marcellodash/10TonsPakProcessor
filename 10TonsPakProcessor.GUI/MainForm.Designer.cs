@@ -39,10 +39,13 @@
       this.imageList = new System.Windows.Forms.ImageList(this.components);
       this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
       this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+      this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
       this.tbtnOpenPak = new System.Windows.Forms.ToolStripButton();
       this.btnExtractAll = new System.Windows.Forms.ToolStripButton();
       this.btnExtract = new System.Windows.Forms.ToolStripButton();
       this.btnPreview = new System.Windows.Forms.ToolStripButton();
+      this.btnCreateArchive = new System.Windows.Forms.ToolStripButton();
+      this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
       this.toolStrip.SuspendLayout();
       this.statusStrip.SuspendLayout();
       this.SuspendLayout();
@@ -54,7 +57,9 @@
             this.toolStripSeparator1,
             this.btnExtractAll,
             this.btnExtract,
-            this.btnPreview});
+            this.btnPreview,
+            this.toolStripSeparator2,
+            this.btnCreateArchive});
       this.toolStrip.Location = new System.Drawing.Point(0, 0);
       this.toolStrip.Name = "toolStrip";
       this.toolStrip.Size = new System.Drawing.Size(586, 25);
@@ -130,6 +135,11 @@
       // 
       this.folderBrowserDialog.RootFolder = System.Environment.SpecialFolder.MyComputer;
       // 
+      // toolStripSeparator2
+      // 
+      this.toolStripSeparator2.Name = "toolStripSeparator2";
+      this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+      // 
       // tbtnOpenPak
       // 
       this.tbtnOpenPak.Image = global::TenTonsPakProcessor.GUI.Properties.Resources.Button_Open;
@@ -168,6 +178,20 @@
       this.btnPreview.Size = new System.Drawing.Size(68, 22);
       this.btnPreview.Text = "Preview";
       this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
+      // 
+      // btnCreateArchive
+      // 
+      this.btnCreateArchive.Image = global::TenTonsPakProcessor.GUI.Properties.Resources.Button_CreateArchive;
+      this.btnCreateArchive.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.btnCreateArchive.Name = "btnCreateArchive";
+      this.btnCreateArchive.Size = new System.Drawing.Size(113, 22);
+      this.btnCreateArchive.Text = "Create Archive...";
+      this.btnCreateArchive.Click += new System.EventHandler(this.btnCreateArchive_Click);
+      // 
+      // saveFileDialog
+      // 
+      this.saveFileDialog.DefaultExt = "pak";
+      this.saveFileDialog.Filter = "PAK files|*.pak";
       // 
       // MainForm
       // 
@@ -210,6 +234,9 @@
     private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
     private System.Windows.Forms.ToolStripProgressBar pbProgress;
     private System.Windows.Forms.ToolStripButton btnPreview;
+    private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+    private System.Windows.Forms.ToolStripButton btnCreateArchive;
+    private System.Windows.Forms.SaveFileDialog saveFileDialog;
   }
 }
 

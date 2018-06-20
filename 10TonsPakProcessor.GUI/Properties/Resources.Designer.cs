@@ -63,6 +63,16 @@ namespace TenTonsPakProcessor.GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Button_CreateArchive {
+            get {
+                object obj = ResourceManager.GetObject("Button_CreateArchive", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Button_Extract {
             get {
                 object obj = ResourceManager.GetObject("Button_Extract", resourceCulture);

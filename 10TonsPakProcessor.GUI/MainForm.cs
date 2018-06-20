@@ -138,6 +138,7 @@ namespace TenTonsPakProcessor.GUI
 
     private async void btnExtractAll_Click(object sender, EventArgs e)
     {
+      folderBrowserDialog.Description = "Select folder to extract All";
       if (folderBrowserDialog.ShowDialog(this) != DialogResult.OK)
         return;
 
@@ -209,6 +210,32 @@ namespace TenTonsPakProcessor.GUI
 
       File.Delete(targetPath);
       Text = $"{Path.GetFileName(filename)} - {TITLE}";
+    }
+
+    private async void btnCreateArchive_Click(object sender, EventArgs e)
+    {
+      folderBrowserDialog.Description = "Select source folder.";
+      if (folderBrowserDialog.ShowDialog(this) != DialogResult.OK)
+        return;
+
+      if (saveFileDialog.ShowDialog(this) != DialogResult.OK)
+        return;
+
+      Enabled = false;
+      pbProgress.Visible = true;
+      await Task.Run(() => Compress(folderBrowserDialog.SelectedPath, saveFileDialog.FileName));
+      pbProgress.Visible = false;
+      Enabled = true;
+    }
+
+    private static void Compress(string sourceDir, string targetPath)
+    {
+      PakFileWriter writer = new PakFileWriter();
+      foreach (string file in Directory.EnumerateFiles(sourceDir, "*.*", SearchOption.AllDirectories))
+        writer.AddFile(file.Substring(sourceDir.Length + 1), file);
+
+      using (FileStream fs = new FileStream(targetPath, FileMode.Create))
+        writer.WritePak(fs);
     }
   }
 }
