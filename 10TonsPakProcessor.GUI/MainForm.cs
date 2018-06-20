@@ -150,7 +150,7 @@ namespace TenTonsPakProcessor.GUI
 
     private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
     {
-      btnPreview.Enabled = btnExtract.Enabled = e.Node != null;
+      btnPreview.Enabled = btnExtract.Enabled = e.Node?.Tag != null;
     }
 
     private IEnumerable<PakFileItem> EnumerateItems(TreeNode node)

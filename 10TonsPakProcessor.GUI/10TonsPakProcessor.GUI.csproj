@@ -85,5 +85,17 @@
       <Name>10TonsPakProcessor</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="res\Button_Extract.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\Button_ExtractAll.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\Button_Open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\Button_Preview.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

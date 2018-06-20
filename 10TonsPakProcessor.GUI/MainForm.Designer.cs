@@ -29,12 +29,8 @@
     private void InitializeComponent()
     {
       this.components = new System.ComponentModel.Container();
-      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
       this.toolStrip = new System.Windows.Forms.ToolStrip();
-      this.tbtnOpenPak = new System.Windows.Forms.ToolStripButton();
       this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-      this.btnExtractAll = new System.Windows.Forms.ToolStripButton();
-      this.btnExtract = new System.Windows.Forms.ToolStripButton();
       this.statusStrip = new System.Windows.Forms.StatusStrip();
       this.slblFile = new System.Windows.Forms.ToolStripStatusLabel();
       this.slblFiles = new System.Windows.Forms.ToolStripStatusLabel();
@@ -43,6 +39,9 @@
       this.imageList = new System.Windows.Forms.ImageList(this.components);
       this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
       this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+      this.tbtnOpenPak = new System.Windows.Forms.ToolStripButton();
+      this.btnExtractAll = new System.Windows.Forms.ToolStripButton();
+      this.btnExtract = new System.Windows.Forms.ToolStripButton();
       this.btnPreview = new System.Windows.Forms.ToolStripButton();
       this.toolStrip.SuspendLayout();
       this.statusStrip.SuspendLayout();
@@ -62,42 +61,10 @@
       this.toolStrip.TabIndex = 0;
       this.toolStrip.Text = "toolStrip1";
       // 
-      // tbtnOpenPak
-      // 
-      this.tbtnOpenPak.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-      this.tbtnOpenPak.Image = ((System.Drawing.Image)(resources.GetObject("tbtnOpenPak.Image")));
-      this.tbtnOpenPak.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this.tbtnOpenPak.Name = "tbtnOpenPak";
-      this.tbtnOpenPak.Size = new System.Drawing.Size(40, 22);
-      this.tbtnOpenPak.Text = "Open";
-      this.tbtnOpenPak.Click += new System.EventHandler(this.tbtnOpenPak_Click);
-      // 
       // toolStripSeparator1
       // 
       this.toolStripSeparator1.Name = "toolStripSeparator1";
       this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-      // 
-      // btnExtractAll
-      // 
-      this.btnExtractAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-      this.btnExtractAll.Enabled = false;
-      this.btnExtractAll.Image = ((System.Drawing.Image)(resources.GetObject("btnExtractAll.Image")));
-      this.btnExtractAll.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this.btnExtractAll.Name = "btnExtractAll";
-      this.btnExtractAll.Size = new System.Drawing.Size(63, 22);
-      this.btnExtractAll.Text = "Extract All";
-      this.btnExtractAll.Click += new System.EventHandler(this.btnExtractAll_Click);
-      // 
-      // btnExtract
-      // 
-      this.btnExtract.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-      this.btnExtract.Enabled = false;
-      this.btnExtract.Image = ((System.Drawing.Image)(resources.GetObject("btnExtract.Image")));
-      this.btnExtract.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this.btnExtract.Name = "btnExtract";
-      this.btnExtract.Size = new System.Drawing.Size(46, 22);
-      this.btnExtract.Text = "Extract";
-      this.btnExtract.Click += new System.EventHandler(this.btnExtract_Click);
       // 
       // statusStrip
       // 
@@ -163,13 +130,42 @@
       // 
       this.folderBrowserDialog.RootFolder = System.Environment.SpecialFolder.MyComputer;
       // 
+      // tbtnOpenPak
+      // 
+      this.tbtnOpenPak.Image = global::TenTonsPakProcessor.GUI.Properties.Resources.Button_Open;
+      this.tbtnOpenPak.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.tbtnOpenPak.Name = "tbtnOpenPak";
+      this.tbtnOpenPak.Size = new System.Drawing.Size(56, 22);
+      this.tbtnOpenPak.Text = "Open";
+      this.tbtnOpenPak.Click += new System.EventHandler(this.tbtnOpenPak_Click);
+      // 
+      // btnExtractAll
+      // 
+      this.btnExtractAll.Enabled = false;
+      this.btnExtractAll.Image = global::TenTonsPakProcessor.GUI.Properties.Resources.Button_ExtractAll;
+      this.btnExtractAll.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.btnExtractAll.Name = "btnExtractAll";
+      this.btnExtractAll.Size = new System.Drawing.Size(79, 22);
+      this.btnExtractAll.Text = "Extract All";
+      this.btnExtractAll.Click += new System.EventHandler(this.btnExtractAll_Click);
+      // 
+      // btnExtract
+      // 
+      this.btnExtract.Enabled = false;
+      this.btnExtract.Image = global::TenTonsPakProcessor.GUI.Properties.Resources.Button_Extract;
+      this.btnExtract.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.btnExtract.Name = "btnExtract";
+      this.btnExtract.Size = new System.Drawing.Size(62, 22);
+      this.btnExtract.Text = "Extract";
+      this.btnExtract.Click += new System.EventHandler(this.btnExtract_Click);
+      // 
       // btnPreview
       // 
-      this.btnPreview.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
       this.btnPreview.Enabled = false;
+      this.btnPreview.Image = global::TenTonsPakProcessor.GUI.Properties.Resources.Button_Preview;
       this.btnPreview.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.btnPreview.Name = "btnPreview";
-      this.btnPreview.Size = new System.Drawing.Size(52, 22);
+      this.btnPreview.Size = new System.Drawing.Size(68, 22);
       this.btnPreview.Text = "Preview";
       this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
       // 
@@ -184,6 +180,7 @@
       this.Controls.Add(this.toolStrip);
       this.Font = new System.Drawing.Font("Segoe UI", 8.25F);
       this.Name = "MainForm";
+      this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
       this.Text = "10TonsPakProcessor UI";
       this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
       this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
